@@ -4,9 +4,14 @@
   "description": "Mock Order Management API for QA Automation take-home exercise (2h version)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "cucumber-js",
+    "test:features": "cucumber-js features/**/*.feature"
   },
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1"
   }
 }
