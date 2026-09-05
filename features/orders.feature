@@ -27,15 +27,15 @@ Feature: Order management API
 
     # critical inventory identified in code analysis is covered by the test below - expected to fail
   Scenario: Duplicate product lines must not oversell inventory
-    Given I am authenticated as "customer1"
-    And "Wireless Mouse" has 3 units in stock
-    When I place an order containing:
-      | product        | quantity |
-      | Wireless Mouse | 2        |
-      | Wireless Mouse | 2        |
-    Then the response status should be 400
-    And the order should not be created
-    And the product stock should never become negative
+  Given I am authenticated as "customer1"
+  And "USB-C Hub" has 3 units in stock
+  When I place an order containing:
+    | product   | quantity |
+    | USB-C Hub | 2        |
+    | USB-C Hub | 2        |
+  Then the response status should be 400
+  And the order should not be created
+  And the product stock should never become negative
 
     # the tests below target the existing totalCount problem
     # pagination
@@ -94,3 +94,11 @@ Feature: Order management API
     When I change the order status to "shipped"
     Then the response status should be 200
     And the order status should be "shipped"
+
+    #target GET /api/orders/:id     
+    Scenario: Customer cannot access another customer's order
+    Given "customer1" has an existing order
+    And I am authenticated as "customer2"
+    When I request customer1's order
+    Then the response status should be 403 or 404
+    And customer1's order data should not be exposed

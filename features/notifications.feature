@@ -11,7 +11,7 @@ Feature: Order notification API
     Then the response status should be 403 or 404
     And no notification job should be created   
 
-# targets the incorrect use of fixed sleep instead of polling
+# async notification lifecycle - implemented using polling
 Scenario: Notification job completes asynchronously
     Given I am authenticated as "customer1"
     And I have an existing order
