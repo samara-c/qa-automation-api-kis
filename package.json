@@ -12,6 +12,7 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^13.2.1"
+    "@cucumber/cucumber": "^13.2.1",
+    "cypress": "^16.0.0"
   }
 }
