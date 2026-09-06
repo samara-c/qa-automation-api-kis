@@ -1,2 +1,6 @@
 #dependencies 
 node_modules/
+
+#cypress test evidences
+cypress/screenshots/
+cypress/videos/

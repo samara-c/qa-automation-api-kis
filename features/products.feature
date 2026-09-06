@@ -24,8 +24,7 @@ Feature: Product management API
     When I attempt to update the product price to 30.00
     Then the response status should be 403
 
-#expected to fail based on known defects in the code
-
+# Data integrity validation
   Scenario: Product creation rejects invalid inventory values
     Given I am authenticated as "admin"
     When I create a product with:
